@@ -1,37 +1,33 @@
 package console;
 
-import domain.Driver;
 import domain.Vehicle;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class VehicleConsoleInput extends ConsoleInput{
-    Scanner scanner;
+    Scanner scanner = new Scanner(System.in);
+    private int modelId;
+    private String governmentNumber;
     @Override
     public Vehicle input() {
-        scanner = new Scanner(System.in);
-        String model, type;
-        List<Driver> drivers = new ArrayList<>();
         System.out.println("Введите наименование модели: ");
-        model = scanner.nextLine();
-        System.out.println("Введите тип кузова автомобиля: ");
-        type = scanner.nextLine();
-        return new Vehicle(model, type);
+        modelId = scanner.nextInt();
+        System.out.println("Введите гос.номер автомобиля: ");
+        governmentNumber = scanner.nextLine();
+        return new Vehicle(modelId, governmentNumber);
     }
 
     @Override
     public List<Vehicle> inputAll() {
-        scanner = new Scanner(System.in);
-        String model = "", type = "";
+        String answer;
         List<Vehicle> vehicles = new ArrayList<>();
         do {
-            System.out.println("Введите наименование модели: ");
-            model = scanner.nextLine();
-            System.out.println("Введите тип кузова автомобиля: ");
-            type = scanner.nextLine();
-        } while (model != "" || type != "");
+            vehicles.add(input());
+            System.out.print("Продолжить добавление?(yes/no): ");
+            answer = scanner.nextLine();
+        } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
         return vehicles;
     }
 }

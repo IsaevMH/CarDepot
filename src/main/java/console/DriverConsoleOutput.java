@@ -1,31 +1,18 @@
 package console;
 
 import domain.Driver;
-import domain.Vehicle;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class DriverConsoleOutput extends ConsoleOutput{
+public class DriverConsoleOutput extends ConsoleOutput<Driver>{
     @Override
-    public void print(Object object) {
-        if(object instanceof Driver) {
-            Driver driver = (Driver)object;
-            System.out.println(driver.toString());
-        } else {
-            System.out.println("Такого водителя не существует.");
-        }
+    public void print(Driver driver) {
+        System.out.println(driver.toString());
     }
 
     @Override
-    public void printAll(List objects) {
-        if(objects instanceof Driver) {
-            List<Driver> driver = new ArrayList<>();
-            for (Object object : objects)
-                driver.add((Driver) object);
+    public void printAll(List<Driver> drivers) {
+        for (Driver driver : drivers) {
             System.out.println(driver.toString());
-        } else {
-            System.out.println("Таких водителей не существует.");
         }
     }
 }
