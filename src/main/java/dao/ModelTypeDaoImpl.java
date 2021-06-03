@@ -1,30 +1,32 @@
 package dao;
 
+import domain.ModelType;
+
 import java.util.List;
 
 public class ModelTypeDaoImpl implements ModelTypeDao{
     @Override
-    public Object get(Long id) {
+    public ModelType get(Long id) {
         return null;
     }
 
     @Override
-    public List getAll() {
+    public List<ModelType> getAll() {
         return null;
     }
 
     @Override
-    public Object update(Long id) {
+    public ModelType update(Long id) {
         return null;
     }
 
     @Override
-    public Object create(Object teacher) {
+    public ModelType create(ModelType teacher) {
         return null;
     }
 
     @Override
-    public Object delete(Long id) {
+    public ModelType delete(Long id) {
         return null;
     }
 }

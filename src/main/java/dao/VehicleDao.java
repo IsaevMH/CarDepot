@@ -1,4 +1,6 @@
 package dao;
 
-public interface VehicleDao extends RootDao{
+import domain.Vehicle;
+
+public interface VehicleDao extends RootDao<Vehicle> {
 }

@@ -1,4 +1,6 @@
 package dao;
 
-public interface ModelTypeDao extends RootDao{
+import domain.ModelType;
+
+public interface ModelTypeDao extends RootDao<ModelType>{
 }

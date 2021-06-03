@@ -1,30 +1,32 @@
 package dao;
 
+import domain.Vehicle;
+
 import java.util.List;
 
 public class VehicleDaoImpl implements VehicleDao{
     @Override
-    public Object get(Long id) {
+    public Vehicle get(Long id) {
         return null;
     }
 
     @Override
-    public List getAll() {
+    public List<Vehicle> getAll() {
         return null;
     }
 
     @Override
-    public Object update(Long id) {
+    public Vehicle update(Long id) {
         return null;
     }
 
     @Override
-    public Object create(Object teacher) {
+    public Vehicle create(Vehicle teacher) {
         return null;
     }
 
     @Override
-    public Object delete(Long id) {
+    public Vehicle delete(Long id) {
         return null;
     }
 }

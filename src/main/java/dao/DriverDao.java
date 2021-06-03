@@ -1,4 +1,6 @@
 package dao;
 
-public interface DriverDao extends RootDao{
+import domain.Driver;
+
+public interface DriverDao extends RootDao<Driver>{
 }

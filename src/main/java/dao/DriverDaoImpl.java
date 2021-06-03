@@ -1,30 +1,32 @@
 package dao;
 
+import domain.Driver;
+
 import java.util.List;
 
 public class DriverDaoImpl implements DriverDao{
     @Override
-    public Object get(Long id) {
+    public Driver get(Long id) {
         return null;
     }
 
     @Override
-    public List getAll() {
+    public List<Driver> getAll() {
         return null;
     }
 
     @Override
-    public Object update(Long id) {
+    public Driver update(Long id) {
         return null;
     }
 
     @Override
-    public Object create(Object teacher) {
+    public Driver create(Driver teacher) {
         return null;
     }
 
     @Override
-    public Object delete(Long id) {
+    public Driver delete(Long id) {
         return null;
     }
 }
