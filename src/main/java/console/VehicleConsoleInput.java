@@ -6,16 +6,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class VehicleConsoleInput extends ConsoleInput{
+public class VehicleConsoleInput extends ConsoleInput<Vehicle>{
     Scanner scanner = new Scanner(System.in);
-    private int modelId;
-    private String governmentNumber;
+
     @Override
     public Vehicle input() {
         System.out.println("Введите наименование модели: ");
-        modelId = scanner.nextInt();
+        int modelId = scanner.nextInt();
         System.out.println("Введите гос.номер автомобиля: ");
-        governmentNumber = scanner.nextLine();
+        String governmentNumber = scanner.nextLine();
         return new Vehicle(modelId, governmentNumber);
     }
 

@@ -9,12 +9,11 @@ import java.util.Scanner;
 
 public class ModelTypeInput extends ConsoleInput<ModelType> {
     Scanner scanner = new Scanner(System.in);
-    private String name;
 
     @Override
     public ModelType input() {
         System.out.println("Введите наименование модели авто: ");
-        name = scanner.nextLine();
+        String name = scanner.nextLine();
         return new ModelType(name);
     }
 
@@ -27,6 +26,6 @@ public class ModelTypeInput extends ConsoleInput<ModelType> {
             System.out.print("Продолжить добавление?(yes/no): ");
             answer = scanner.nextLine();
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
-        return null;
+        return modelTypes;
     }
 }
