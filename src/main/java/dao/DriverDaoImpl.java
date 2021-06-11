@@ -44,11 +44,12 @@ public class DriverDaoImpl implements DriverDao {
     }
 
     @Override
-    public void update(Driver driver) {
-        String sqlCommand = "UPDATE DRIVER SET NAME=?, EXPERIENCE=? WHERE ID=?";
+    public void update(Driver driver, Long id) {
+        String sqlCommand = "UPDATE DRIVER SET NAME=?, EXPERIENCE=?";
         try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
             ps.setString(1, driver.getName());
             ps.setInt(2, driver.getExperience());
+            ps.setLong(3, id);
             ps.executeUpdate();
         } catch (SQLException exception) {
             exception.printStackTrace();
