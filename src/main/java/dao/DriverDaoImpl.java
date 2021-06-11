@@ -45,7 +45,7 @@ public class DriverDaoImpl implements DriverDao {
 
     @Override
     public void update(Driver driver, Long id) {
-        String sqlCommand = "UPDATE DRIVER SET NAME=?, EXPERIENCE=?";
+        String sqlCommand = "UPDATE DRIVER SET NAME=?, EXPERIENCE=? WHERE ID=?";
         try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
             ps.setString(1, driver.getName());
             ps.setInt(2, driver.getExperience());
@@ -60,7 +60,6 @@ public class DriverDaoImpl implements DriverDao {
     public void create(Driver driver) {
         String sqlCommand = "INSERT INTO DRIVER (NAME, EXPERIENCE) VALUES (?,?)";
         try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
-
             ps.setString(1, driver.getName());
             ps.setInt(2, driver.getExperience());
             ps.executeUpdate();
