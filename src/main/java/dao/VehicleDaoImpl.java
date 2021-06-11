@@ -1,7 +1,6 @@
 package dao;
 
 import domain.Vehicle;
-
 import java.util.List;
 
 public class VehicleDaoImpl implements VehicleDao{
@@ -16,17 +15,17 @@ public class VehicleDaoImpl implements VehicleDao{
     }
 
     @Override
-    public Vehicle update(Long id) {
-        return null;
+    public void update(Vehicle driver) {
+
     }
 
     @Override
-    public Vehicle create(Vehicle teacher) {
-        return null;
+    public void create(Vehicle driver) {
+
     }
 
     @Override
-    public Vehicle delete(Long id) {
-        return null;
+    public void delete(Long id) {
+
     }
 }

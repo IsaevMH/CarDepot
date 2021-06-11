@@ -1,10 +1,18 @@
 package dao;
 
+import domain.Driver;
 import domain.ModelType;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
-public class ModelTypeDaoImpl implements ModelTypeDao{
+public class ModelTypeDaoImpl implements ModelTypeDao {
+
+    Connection connection = DefaultConnection.ConnectToDatabase();
+
     @Override
     public ModelType get(Long id) {
         return null;
@@ -16,17 +24,17 @@ public class ModelTypeDaoImpl implements ModelTypeDao{
     }
 
     @Override
-    public ModelType update(Long id) {
-        return null;
+    public void update(ModelType driver) {
+
     }
 
     @Override
-    public ModelType create(ModelType teacher) {
-        return null;
+    public void create(ModelType driver) {
+
     }
 
     @Override
-    public ModelType delete(Long id) {
-        return null;
+    public void delete(Long id) {
+
     }
 }

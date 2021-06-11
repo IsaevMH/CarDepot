@@ -1,32 +1,82 @@
 package dao;
 
 import domain.Driver;
-
+import java.sql.*;
+import java.util.LinkedList;
 import java.util.List;
 
-public class DriverDaoImpl implements DriverDao{
+public class DriverDaoImpl implements DriverDao {
+
+    Connection connection = DefaultConnection.ConnectToDatabase();
+
     @Override
     public Driver get(Long id) {
-        return null;
+        String sqlCommand = "SELECT * FROM DRIVER WHERE ID=?";
+        Driver driver = null;
+        try(PreparedStatement pr = connection.prepareStatement(sqlCommand)) {
+            pr.setLong(1, id);
+            pr.executeUpdate();
+            ResultSet resultSet = pr.executeQuery();
+            String name = resultSet.getString("NAME");
+            int experience = resultSet.getInt("EXPERIENCE");
+            driver = new Driver(name, experience);
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return driver;
     }
 
     @Override
     public List<Driver> getAll() {
-        return null;
+        String sqlCommand = "SELECT * FROM DRIVER";
+        List<Driver> drivers = new LinkedList<>();
+        try(Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlCommand)) {
+            while (resultSet.next()) {
+                String name = resultSet.getString("NAME");
+                int experience = resultSet.getInt("EXPERIENCE");
+                drivers.add(new Driver(name, experience));
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return drivers;
     }
 
     @Override
-    public Driver update(Long id) {
-        return null;
+    public void update(Driver driver) {
+        String sqlCommand = "UPDATE DRIVER SET NAME=?, EXPERIENCE=? WHERE ID=?";
+        try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
+            ps.setString(1, driver.getName());
+            ps.setInt(2, driver.getExperience());
+            ps.executeUpdate();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 
     @Override
-    public Driver create(Driver teacher) {
-        return null;
+    public void create(Driver driver) {
+        String sqlCommand = "INSERT INTO DRIVER (NAME, EXPERIENCE) VALUES (?,?)";
+        try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
+
+            ps.setString(1, driver.getName());
+            ps.setInt(2, driver.getExperience());
+            ps.executeUpdate();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 
     @Override
-    public Driver delete(Long id) {
-        return null;
+    public void delete(Long id) {
+        String sqlCommand = "DELETE * FROM DRIVER WHERE ID=?";
+        try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
+            ps.setLong(1, id);
+            ps.executeUpdate();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 }
+
