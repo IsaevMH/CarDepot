@@ -29,4 +29,27 @@ public class DriverConsoleInput extends ConsoleInput<Driver>{
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
         return drivers;
     }
+
+    @Override
+    public long inputIdToRemove() {
+        System.out.print("Введите ID водителя, для его удаления: ");
+        long id = scanner.nextLong();
+        return id;
+    }
+
+    @Override
+    public long inputIdToShow() {
+        System.out.print("Введите ID водителя, для его демонстрации: ");
+        long id = scanner.nextLong();
+        return id;
+    }
+
+    @Override
+    public Driver inputDataToChangeObject() {
+        System.out.print("Введите ФИО водителя: ");
+        String name = scanner.nextLine();
+        System.out.print("Введите опыт вождения водителя: ");
+        int experience = scanner.nextInt();
+        return new Driver(name,experience);
+    }
 }

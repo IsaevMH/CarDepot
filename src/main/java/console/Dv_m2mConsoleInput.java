@@ -2,6 +2,8 @@ package console;
 
 
 import domain.Dv_m2m;
+import domain.ModelType;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -28,5 +30,28 @@ public class Dv_m2mConsoleInput extends ConsoleInput<Dv_m2m>{
             answer = scanner.nextLine();
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
         return Dv_m2ms;
+    }
+
+    @Override
+    public long inputIdToRemove() {
+        System.out.print("Введите ID связи автомобиля и водителя, для ее удаления: ");
+        long id = scanner.nextLong();
+        return id;
+    }
+
+    @Override
+    public long inputIdToShow() {
+        System.out.print("Введите ID связи автомобиля и водителя, для ее демонстрации: ");
+        long id = scanner.nextLong();
+        return id;
+    }
+
+    @Override
+    public Dv_m2m inputDataToChangeObject() {
+        System.out.print("Введите ID модели автомобиля: ");
+        int carId = scanner.nextInt();
+        System.out.print("Введите ID модели автомобиля: ");
+        int driverId = scanner.nextInt();
+        return new Dv_m2m(carId, driverId);
     }
 }

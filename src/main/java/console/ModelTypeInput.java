@@ -1,6 +1,7 @@
 package console;
 
 import domain.ModelType;
+import domain.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,5 +28,26 @@ public class ModelTypeInput extends ConsoleInput<ModelType> {
             answer = scanner.nextLine();
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
         return modelTypes;
+    }
+
+    @Override
+    public long inputIdToRemove() {
+        System.out.print("Введите ID модели автомобиля, для его удаления: ");
+        long id = scanner.nextLong();
+        return id;
+    }
+
+    @Override
+    public long inputIdToShow() {
+        System.out.print("Введите ID модели автомобиля, для его демонстрации: ");
+        long id = scanner.nextLong();
+        return id;
+    }
+
+    @Override
+    public ModelType inputDataToChangeObject() {
+        System.out.print("Введите наименование модели транспорта: ");
+        String name = scanner.nextLine();
+        return new ModelType(name);
     }
 }

@@ -1,5 +1,6 @@
 package console;
 
+import domain.Driver;
 import domain.Vehicle;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +29,28 @@ public class VehicleConsoleInput extends ConsoleInput<Vehicle>{
             answer = scanner.nextLine();
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
         return vehicles;
+    }
+
+    @Override
+    public long inputIdToRemove() {
+        System.out.print("Введите ID транспорта, для его удаления: ");
+        long id = scanner.nextLong();
+        return id;
+    }
+
+    @Override
+    public long inputIdToShow() {
+        System.out.print("Введите ID транспорта, для его демонстрации: ");
+        long id = scanner.nextLong();
+        return id;
+    }
+
+    @Override
+    public Vehicle inputDataToChangeObject() {
+        System.out.print("Введите ID модели транспорта: ");
+        int idModel = scanner.nextInt();
+        System.out.print("Введите гос.номер авто: ");
+        String governmentNumber = scanner.nextLine();
+        return new Vehicle(idModel,governmentNumber);
     }
 }
