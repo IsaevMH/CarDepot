@@ -15,8 +15,8 @@ public class DriverDaoImpl implements DriverDao {
         Driver driver = null;
         try(PreparedStatement pr = connection.prepareStatement(sqlCommand)) {
             pr.setLong(1, id);
-            pr.executeUpdate();
             ResultSet resultSet = pr.executeQuery();
+            resultSet.next();
             String name = resultSet.getString("NAME");
             int experience = resultSet.getInt("EXPERIENCE");
             driver = new Driver(name, experience);
@@ -70,7 +70,7 @@ public class DriverDaoImpl implements DriverDao {
 
     @Override
     public void delete(Long id) {
-        String sqlCommand = "DELETE * FROM DRIVER WHERE ID=?";
+        String sqlCommand = "DELETE FROM DRIVER WHERE ID=?";
         try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
             ps.setLong(1, id);
             ps.executeUpdate();

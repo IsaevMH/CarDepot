@@ -83,7 +83,7 @@ public class MainApp {
                 System.out.println("Удален");
                 break;
             case 3:
-                vehicle = vehicleInput.input();
+                vehicle = vehicleInput.inputDataToChangeObject();
                 vehicleId = vehicleInput.inputIdToShow();
                 vehicleService.changeVehicle(vehicle, vehicleId);
                 System.out.println("Изменен");
@@ -117,7 +117,7 @@ public class MainApp {
                 System.out.println("Удален");
                 break;
             case 3:
-                driver = driverInput.input();
+                driver = driverInput.inputDataToChangeObject();
                 driverId = driverInput.inputIdToShow();
                 driverService.changeDriver(driver, driverId);
                 System.out.println("Изменен");
@@ -137,8 +137,8 @@ public class MainApp {
         ModelTypeService modelService = new ModelTypeService();
         ModelTypeInput modelInput = new ModelTypeInput();
         ModelTypeOutput modelOuput = new ModelTypeOutput();
-        long modelId;
-        ModelType modelType;
+        long modelId = 0;
+        ModelType modelType = null;
         switch (option) {
             case 1:
                 modelType = modelInput.input();
@@ -151,7 +151,7 @@ public class MainApp {
                 System.out.println("Удален");
                 break;
             case 3:
-                modelType = modelInput.input();
+                modelType = modelInput.inputDataToChangeObject();
                 modelId = modelInput.inputIdToShow();
                 modelService.changeModelType(modelType, modelId);
                 System.out.println("Изменен");
@@ -185,7 +185,7 @@ public class MainApp {
                 System.out.println("Удален");
                 break;
             case 3:
-                dvm2m = dvm2mInput.input();
+                dvm2m = dvm2mInput.inputDataToChangeObject();
                 dvm2mId = dvm2mInput.inputIdToShow();
                 dvm2mService.changeDriverAndCarLink(dvm2m, dvm2mId);
                 System.out.println("Изменен");

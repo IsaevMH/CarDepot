@@ -13,6 +13,7 @@ public class DriverConsoleInput extends ConsoleInput<Driver>{
     public Driver input() {
         System.out.println("Введите ФИО водителя: ");
         String name = scanner.nextLine();
+        scanner.nextLine();
         System.out.println("Введите стаж водителя: ");
         int experience = scanner.nextInt();
         return new Driver(name, experience);
@@ -25,7 +26,7 @@ public class DriverConsoleInput extends ConsoleInput<Driver>{
         do {
             drivers.add(input());
             System.out.print("Продолжить добавление?(yes/no): ");
-            answer = scanner.nextLine();
+            answer = scanner.next();
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
         return drivers;
     }
@@ -48,6 +49,7 @@ public class DriverConsoleInput extends ConsoleInput<Driver>{
     public Driver inputDataToChangeObject() {
         System.out.print("Введите ФИО водителя: ");
         String name = scanner.nextLine();
+        scanner.nextLine();
         System.out.print("Введите опыт вождения водителя: ");
         int experience = scanner.nextInt();
         return new Driver(name,experience);

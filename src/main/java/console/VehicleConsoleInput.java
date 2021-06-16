@@ -15,7 +15,7 @@ public class VehicleConsoleInput extends ConsoleInput<Vehicle>{
         System.out.println("Введите наименование модели: ");
         int modelId = scanner.nextInt();
         System.out.println("Введите гос.номер автомобиля: ");
-        String governmentNumber = scanner.nextLine();
+        String governmentNumber = scanner.next();
         return new Vehicle(modelId, governmentNumber);
     }
 
@@ -26,7 +26,7 @@ public class VehicleConsoleInput extends ConsoleInput<Vehicle>{
         do {
             vehicles.add(input());
             System.out.print("Продолжить добавление?(yes/no): ");
-            answer = scanner.nextLine();
+            answer = scanner.next();
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
         return vehicles;
     }
@@ -50,7 +50,7 @@ public class VehicleConsoleInput extends ConsoleInput<Vehicle>{
         System.out.print("Введите ID модели транспорта: ");
         int idModel = scanner.nextInt();
         System.out.print("Введите гос.номер авто: ");
-        String governmentNumber = scanner.nextLine();
+        String governmentNumber = scanner.next();
         return new Vehicle(idModel,governmentNumber);
     }
 }

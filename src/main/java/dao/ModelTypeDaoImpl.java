@@ -15,8 +15,8 @@ public class ModelTypeDaoImpl implements ModelTypeDao {
         ModelType modelType = null;
         try(PreparedStatement pr = connection.prepareStatement(sqlCommand)) {
             pr.setLong(1, id);
-            pr.executeUpdate();
             ResultSet resultSet = pr.executeQuery();
+            resultSet.next();
             String name = resultSet.getString("NAME");
             modelType = new ModelType(name);
         } catch (SQLException exception) {
@@ -66,7 +66,7 @@ public class ModelTypeDaoImpl implements ModelTypeDao {
 
     @Override
     public void delete(Long id) {
-        String sqlCommand = "DELETE * FROM MODEL_TYPE WHERE ID=?";
+        String sqlCommand = "DELETE FROM MODEL_TYPE WHERE ID=?";
         try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
             ps.setLong(1, id);
             ps.executeUpdate();

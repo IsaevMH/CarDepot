@@ -26,7 +26,7 @@ public class Dvm2mConsoleInput extends ConsoleInput<Dvm2m>{
         do {
             dvm2MS.add(input());
             System.out.print("Продолжить добавление?(yes/no): ");
-            answer = scanner.nextLine();
+            answer = scanner.next();
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
         return dvm2MS;
     }
@@ -49,7 +49,7 @@ public class Dvm2mConsoleInput extends ConsoleInput<Dvm2m>{
     public Dvm2m inputDataToChangeObject() {
         System.out.print("Введите ID модели автомобиля: ");
         int carId = scanner.nextInt();
-        System.out.print("Введите ID модели автомобиля: ");
+        System.out.print("Введите ID водителя: ");
         int driverId = scanner.nextInt();
         return new Dvm2m(carId, driverId);
     }

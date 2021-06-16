@@ -15,8 +15,8 @@ public class Dvm2MDaoImpl implements Dvm2mDao {
         Dvm2m dvm2M = null;
         try(PreparedStatement pr = connection.prepareStatement(sqlCommand)) {
             pr.setLong(1, id);
-            pr.executeUpdate();
             ResultSet resultSet = pr.executeQuery();
+            resultSet.next();
             int driverId = resultSet.getInt("DRIVER_ID");
             int vehicleId = resultSet.getInt("VEHICLE_ID");
             dvm2M = new Dvm2m(driverId, vehicleId);
@@ -70,7 +70,7 @@ public class Dvm2MDaoImpl implements Dvm2mDao {
 
     @Override
     public void delete(Long id) {
-        String sqlCommand = "DELETE * FROM DV_M2M WHERE ID=?";
+        String sqlCommand = "DELETE FROM DV_M2M WHERE ID=?";
         try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
             ps.setLong(1, id);
             ps.executeUpdate();

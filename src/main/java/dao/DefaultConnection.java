@@ -13,21 +13,21 @@ public class DefaultConnection {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
-            System.out.format("Connection established with %s", connection.getCatalog());
+            System.out.format("Connection established with %s\n", connection.getCatalog());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-        finally {
-            if(connection != null){
-                try {
-                    connection.close();
-                } catch (SQLException exception) {
-                    exception.printStackTrace();
-                }
-            }
-        }
+//        finally {
+//            if(connection != null){
+//                try {
+//                    connection.close();
+//                } catch (SQLException exception) {
+//                    exception.printStackTrace();
+//                }
+//            }
+//        }
         return connection;
     }
 }

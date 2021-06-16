@@ -39,8 +39,9 @@ public class ModelTypeInput extends ConsoleInput<ModelType> {
 
     @Override
     public long inputIdToShow() {
+        scanner.nextLine();
         System.out.print("Введите ID модели автомобиля, для его демонстрации: ");
-        long id = scanner.nextLong();
+        Long id = scanner.nextLong();
         return id;
     }
 
