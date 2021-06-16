@@ -8,19 +8,19 @@ import java.util.List;
 public class VehicleService {
     VehicleDaoImpl dao = new VehicleDaoImpl();
 
-    public Vehicle getDriver(Long id) {
+    public Vehicle getVehicle(Long id) {
         return dao.get(id);
     }
 
-    public List<Vehicle> getAllDrivers() {
+    public List<Vehicle> getAllVehicles() {
         return dao.getAll();
     }
 
-    public void addDriver(Vehicle vehicle) {
+    public void addVehicle(Vehicle vehicle) {
         dao.create(vehicle);
     }
 
-    public void removeDriver(long id) {
+    public void removeVehicle(long id) {
         dao.delete(id);
     }
 
