@@ -1,54 +1,54 @@
 package dao;
 
-import domain.Dvm2m;
+import domain.DriverToVehicle;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Dvm2MDaoImpl implements Dvm2mDao {
+public class DriverToVehicleImpl implements dao.DriverToVehicle {
 
     Connection connection = DefaultConnection.ConnectToDatabase();
 
     @Override
-    public Dvm2m get(Long id) {
+    public DriverToVehicle get(Long id) {
         String sqlCommand = "SELECT * FROM DV_M2M WHERE ID=?";
-        Dvm2m dvm2M = null;
+        DriverToVehicle driverToVehicle = null;
         try(PreparedStatement pr = connection.prepareStatement(sqlCommand)) {
             pr.setLong(1, id);
             ResultSet resultSet = pr.executeQuery();
             resultSet.next();
             int driverId = resultSet.getInt("DRIVER_ID");
             int vehicleId = resultSet.getInt("VEHICLE_ID");
-            dvm2M = new Dvm2m(driverId, vehicleId);
+            driverToVehicle = new DriverToVehicle(driverId, vehicleId);
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-        return dvm2M;
+        return driverToVehicle;
     }
 
     @Override
-    public List<Dvm2m> getAll() {
+    public List<DriverToVehicle> getAll() {
         String sqlCommand = "SELECT * FROM DV_M2M";
-        List<Dvm2m> dvm2MS = new LinkedList<>();
+        List<DriverToVehicle> driverToVehicles = new LinkedList<>();
         try(Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlCommand)) {
             while (resultSet.next()) {
                 int driverId = resultSet.getInt("DRIVER_ID");
                 int vehicleId = resultSet.getInt("VEHICLE_ID");
-                dvm2MS.add(new Dvm2m(driverId, vehicleId));
+                driverToVehicles.add(new DriverToVehicle(driverId, vehicleId));
             }
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-        return dvm2MS;
+        return driverToVehicles;
     }
 
     @Override
-    public void update(Dvm2m dvm2M, Long id) {
+    public void update(DriverToVehicle driverToVehicle, Long id) {
         String sqlCommand = "UPDATE DV_M2M SET DRIVER_ID=?, VEHICLE_ID=? WHERE ID=?";
         try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
-            ps.setInt(1, dvm2M.getDriverId());
-            ps.setInt(2, dvm2M.getVehicleId());
+            ps.setInt(1, driverToVehicle.getDriverId());
+            ps.setInt(2, driverToVehicle.getVehicleId());
             ps.setLong(3, id);
             ps.executeUpdate();
         } catch (SQLException exception) {
@@ -57,11 +57,11 @@ public class Dvm2MDaoImpl implements Dvm2mDao {
     }
 
     @Override
-    public void create(Dvm2m dvm2M) {
+    public void create(DriverToVehicle driverToVehicle) {
         String sqlCommand = "INSERT INTO DV_M2M (DRIVER_ID, VEHICLE_ID) VALUES (?,?)";
         try(PreparedStatement ps = connection.prepareStatement(sqlCommand)) {
-            ps.setInt(1, dvm2M.getDriverId());
-            ps.setInt(2, dvm2M.getVehicleId());
+            ps.setInt(1, driverToVehicle.getDriverId());
+            ps.setInt(2, driverToVehicle.getVehicleId());
             ps.executeUpdate();
         } catch (SQLException exception) {
             exception.printStackTrace();

@@ -1,34 +1,34 @@
 package console;
 
 
-import domain.Dvm2m;
+import domain.DriverToVehicle;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Dvm2mConsoleInput extends ConsoleInput<Dvm2m>{
+public class DriverToVehicleConsoleInput extends ConsoleInput<DriverToVehicle>{
     Scanner scanner = new Scanner(System.in);
     @Override
-    public Dvm2m input() {
+    public DriverToVehicle input() {
         System.out.println("Введите ID водителя: ");
         int driverId = scanner.nextInt();
         System.out.println("Введите ID автомобиля: ");
         int vehicleId = scanner.nextInt();
-        return new Dvm2m(driverId, vehicleId);
+        return new DriverToVehicle(driverId, vehicleId);
     }
 
     @Override
-    public List<Dvm2m> inputAll() {
+    public List<DriverToVehicle> inputAll() {
         String answer;
-        List<Dvm2m> dvm2MS = new ArrayList<>();
+        List<DriverToVehicle> driverToVehicles = new ArrayList<>();
         do {
-            dvm2MS.add(input());
+            driverToVehicles.add(input());
             System.out.print("Продолжить добавление?(yes/no): ");
             answer = scanner.next();
         } while (answer.toLowerCase(Locale.ROOT).contains("yes"));
-        return dvm2MS;
+        return driverToVehicles;
     }
 
     @Override
@@ -46,11 +46,11 @@ public class Dvm2mConsoleInput extends ConsoleInput<Dvm2m>{
     }
 
     @Override
-    public Dvm2m inputDataToChangeObject() {
+    public DriverToVehicle inputDataToChangeObject() {
         System.out.print("Введите ID модели автомобиля: ");
         int carId = scanner.nextInt();
         System.out.print("Введите ID водителя: ");
         int driverId = scanner.nextInt();
-        return new Dvm2m(carId, driverId);
+        return new DriverToVehicle(carId, driverId);
     }
 }

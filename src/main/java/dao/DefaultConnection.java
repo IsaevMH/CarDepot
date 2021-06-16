@@ -19,15 +19,6 @@ public class DefaultConnection {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-//        finally {
-//            if(connection != null){
-//                try {
-//                    connection.close();
-//                } catch (SQLException exception) {
-//                    exception.printStackTrace();
-//                }
-//            }
-//        }
         return connection;
     }
 }

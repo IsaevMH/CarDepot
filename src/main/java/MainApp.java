@@ -1,10 +1,10 @@
 import console.*;
 import domain.Driver;
-import domain.Dvm2m;
 import domain.ModelType;
 import domain.Vehicle;
+import domain.DriverToVehicle;
 import service.DriverService;
-import service.Dvm2mService;
+import service.DriverToVehicleService;
 import service.ModelTypeService;
 import service.VehicleService;
 
@@ -22,8 +22,7 @@ public class MainApp {
         System.out.println("4. Привязки");
         System.out.println("5. Выход");
         System.out.print("Введите значение от 1 до 5: ");
-        int option = in.nextInt();
-        return option;
+        return in.nextInt();
     }
 
     public static int displayCarsInfo() {
@@ -33,8 +32,7 @@ public class MainApp {
         System.out.println("3. Изменить");
         System.out.println("4. Показать конкретный автомобиль");
         System.out.println("5. Показать все");
-        int option = in.nextInt();
-        return option;
+        return in.nextInt();
     }
 
     public static int displayDriversInfo() {
@@ -44,8 +42,7 @@ public class MainApp {
         System.out.println("3. Изменить");
         System.out.println("4. Показать конкретного водителя");
         System.out.println("5. Показать все");
-        int option = in.nextInt();
-        return option;
+        return in.nextInt();
     }
 
     public static int displayModelType() {
@@ -55,8 +52,7 @@ public class MainApp {
         System.out.println("3. Изменить");
         System.out.println("4. Показать конкретную модель");
         System.out.println("5. Показать все");
-        int option = in.nextInt();
-        return option;
+        return in.nextInt();
     }
 
     public static int displayBindings() {
@@ -66,8 +62,7 @@ public class MainApp {
         System.out.println("3. Изменить");
         System.out.println("4. Показать конкретную привязку");
         System.out.println("5. Показать все");
-        int option = in.nextInt();
-        return option;
+        return in.nextInt();
     }
 
     private static void selectOptionToVehicle(int option) {
@@ -144,8 +139,8 @@ public class MainApp {
         ModelTypeService modelService = new ModelTypeService();
         ModelTypeInput modelInput = new ModelTypeInput();
         ModelTypeOutput modelOuput = new ModelTypeOutput();
-        long modelId = 0;
-        ModelType modelType = null;
+        long modelId;
+        ModelType modelType;
         switch (option) {
             case 1:
                 modelType = modelInput.input();
@@ -175,37 +170,37 @@ public class MainApp {
         }
     }
 
-    private static void selectOptionToDvm2m(int option) {
-        Dvm2mService dvm2mService = new Dvm2mService();
-        Dvm2mConsoleInput dvm2mInput = new Dvm2mConsoleInput();
-        Dvm2mConsoleOutput dvm2mOutput = new Dvm2mConsoleOutput();
-        long dvm2mId;
-        Dvm2m dvm2m;
+    private static void selectOptionToDriverToVehicle(int option) {
+        DriverToVehicleService driverToVehicleService = new DriverToVehicleService();
+        DriverToVehicleConsoleInput driverToVehicleInput = new DriverToVehicleConsoleInput();
+        DriverToVehicleConsoleOutput driverToVehicleOutput = new DriverToVehicleConsoleOutput();
+        long driverToVehicleId;
+        DriverToVehicle driverToVehicle;
         switch (option) {
             case 1:
-                dvm2m = dvm2mInput.input();
-                dvm2mService.addDriverAndCarLink(dvm2m);
+                driverToVehicle = driverToVehicleInput.input();
+                driverToVehicleService.addDriverAndCarLink(driverToVehicle);
                 System.out.println("Добавлен");
                 break;
             case 2:
-                dvm2mId = dvm2mInput.inputIdToRemove();
-                dvm2mService.removeDriverAndCarLink(dvm2mId);
+                driverToVehicleId = driverToVehicleInput.inputIdToRemove();
+                driverToVehicleService.removeDriverAndCarLink(driverToVehicleId);
                 System.out.println("Удален");
                 break;
             case 3:
-                dvm2m = dvm2mInput.inputDataToChangeObject();
-                dvm2mId = dvm2mInput.inputIdToShow();
-                dvm2mService.changeDriverAndCarLink(dvm2m, dvm2mId);
+                driverToVehicle = driverToVehicleInput.inputDataToChangeObject();
+                driverToVehicleId = driverToVehicleInput.inputIdToShow();
+                driverToVehicleService.changeDriverAndCarLink(driverToVehicle, driverToVehicleId);
                 System.out.println("Изменен");
                 break;
             case 4:
-                dvm2mId = dvm2mInput.inputIdToShow();
-                dvm2m = dvm2mService.getDriverAndCarLink(dvm2mId);
-                dvm2mOutput.print(dvm2m);
+                driverToVehicleId = driverToVehicleInput.inputIdToShow();
+                driverToVehicle = driverToVehicleService.getDriverAndCarLink(driverToVehicleId);
+                driverToVehicleOutput.print(driverToVehicle);
                 break;
             case 5:
-                List<Dvm2m> dvm2ms = dvm2mService.getDriverAndCarLins();
-                dvm2mOutput.printAll(dvm2ms);
+                List<DriverToVehicle> driverToVehicles = driverToVehicleService.getDriverAndCarLins();
+                driverToVehicleOutput.printAll(driverToVehicles);
                 break;
         }
     }
@@ -229,7 +224,7 @@ public class MainApp {
                     break;
                 case 4:
                     option = displayBindings();
-                    selectOptionToDvm2m(option);
+                    selectOptionToDriverToVehicle(option);
                     break;
                 default:
                     System.exit(0);

@@ -1,8 +1,6 @@
 package dao;
 
-import domain.Driver;
 import domain.Vehicle;
-
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;

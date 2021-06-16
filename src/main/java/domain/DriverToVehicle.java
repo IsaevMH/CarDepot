@@ -1,10 +1,10 @@
 package domain;
 
-public class Dvm2m {
+public class DriverToVehicle {
     private int vehicleId;
     private int driverId;
 
-    public Dvm2m(int vehicleId, int driverId) {
+    public DriverToVehicle(int vehicleId, int driverId) {
         this.vehicleId = vehicleId;
         this.driverId = driverId;
     }
