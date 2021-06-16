@@ -20,11 +20,13 @@ public class MainApp {
         System.out.println("2. Водитель");
         System.out.println("3. Модель авто.");
         System.out.println("4. Привязки");
-        System.out.print("Введите значение от 1 до 4: ");
+        System.out.println("5. Выход");
+        System.out.print("Введите значение от 1 до 5: ");
         int option = in.nextInt();
         return option;
     }
-    public static int displayCarsInfo(){
+
+    public static int displayCarsInfo() {
         System.out.println("----------------Автомобиль------------------");
         System.out.println("1. Добавить");
         System.out.println("2. Удалить");
@@ -34,6 +36,7 @@ public class MainApp {
         int option = in.nextInt();
         return option;
     }
+
     public static int displayDriversInfo() {
         System.out.println("----------------Водитель--------------------");
         System.out.println("1. Добавить");
@@ -44,6 +47,7 @@ public class MainApp {
         int option = in.nextInt();
         return option;
     }
+
     public static int displayModelType() {
         System.out.println("----------------Модель авто.----------------");
         System.out.println("1. Добавить");
@@ -54,6 +58,7 @@ public class MainApp {
         int option = in.nextInt();
         return option;
     }
+
     public static int displayBindings() {
         System.out.println("----------------Привязки------------------");
         System.out.println("1. Добавить");
@@ -99,6 +104,7 @@ public class MainApp {
                 break;
         }
     }
+
     private static void selectOptionToDriver(int option) {
         DriverService driverService = new DriverService();
         DriverConsoleInput driverInput = new DriverConsoleInput();
@@ -133,6 +139,7 @@ public class MainApp {
                 break;
         }
     }
+
     private static void selectOptionToModelType(int option) {
         ModelTypeService modelService = new ModelTypeService();
         ModelTypeInput modelInput = new ModelTypeInput();
@@ -167,13 +174,14 @@ public class MainApp {
                 break;
         }
     }
+
     private static void selectOptionToDvm2m(int option) {
         Dvm2mService dvm2mService = new Dvm2mService();
         Dvm2mConsoleInput dvm2mInput = new Dvm2mConsoleInput();
         Dvm2mConsoleOutput dvm2mOutput = new Dvm2mConsoleOutput();
         long dvm2mId;
         Dvm2m dvm2m;
-        switch (option){
+        switch (option) {
             case 1:
                 dvm2m = dvm2mInput.input();
                 dvm2mService.addDriverAndCarLink(dvm2m);
@@ -203,27 +211,29 @@ public class MainApp {
     }
 
     public static void main(String[] args) {
-        int value = displayMainMenu();
         int option = 0;
-        switch (value) {
-            case 1:
-                option = displayCarsInfo();
-                selectOptionToVehicle(option);
-                break;
-            case 2:
-                option = displayDriversInfo();
-                selectOptionToDriver(option);
-                break;
-            case 3:
-                option = displayModelType();
-                selectOptionToModelType(option);
-                break;
-            case 4:
-                option = displayBindings();
-                selectOptionToDvm2m(option);
-                break;
-            default:
-                System.exit(0);
-        }
+        do {
+            int value = displayMainMenu();
+            switch (value) {
+                case 1:
+                    option = displayCarsInfo();
+                    selectOptionToVehicle(option);
+                    break;
+                case 2:
+                    option = displayDriversInfo();
+                    selectOptionToDriver(option);
+                    break;
+                case 3:
+                    option = displayModelType();
+                    selectOptionToModelType(option);
+                    break;
+                case 4:
+                    option = displayBindings();
+                    selectOptionToDvm2m(option);
+                    break;
+                default:
+                    System.exit(0);
+            }
+        } while (option != 0) ;
     }
 }
